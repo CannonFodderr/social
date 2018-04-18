@@ -1,4 +1,6 @@
 const express               = require('express'),
+      app                   = express(),
+      dotenv                = require('dotenv').config();
       mongoose              = require('mongoose'),
       path                  = require('path'),
       router                = express.Router(),
@@ -8,10 +10,11 @@ const express               = require('express'),
       passportLocalMongoose = require('passport-local-mongoose'),
       bodyParser            = require('body-parser'),
       User                  = require('./models/user');
+      
 
-const app = express(),
-      dburl = process.env.DBURL || 'mongodb://localhost/socialNetwork';
-      port = process.env.PORT || 8080;
+const dburl = process.env.DBURL;
+      port = process.env.PORT;
+
 //Import Routes
 const indexRoutes = require('./routes/index'),
       userRoutes = require('./routes/user');
