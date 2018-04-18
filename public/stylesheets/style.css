@@ -1,0 +1,102 @@
+:root{
+    --primary_color: #333;
+    --secondary_color: #2600ff;
+}
+html, body{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+img{
+    position: relative;
+    display: block;
+    height: 100%;
+}
+.container{
+    position: relative;
+    height: 100%;
+    padding: 1vh 2vw;
+}
+.nav_container{
+    width: 100%;
+    height: 6vh;
+    display: grid;
+    grid-template-areas: 'brand space profile';
+    grid-template-columns: 1fr 7fr 2fr;
+    grid-template-rows: 6vh;
+    background: #333;
+    padding: 0vh 4vw 0vh 4vw;
+    font-size: 1rem;
+}
+.nav_container a {
+    color: #fff;
+    position: relative;
+    text-decoration: none;  
+}
+.avatar{
+    display: block;
+}
+.avatar img{
+    position: relative;
+    margin: 0 auto;
+    height: 6vh;
+    border: 1px dashed #ccc;
+    border-radius: 50%;
+}
+.brand{
+    height: auto;
+    grid-area: brand;
+}
+
+.profile{
+    grid-area: profile;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+.loginForm{
+    grid-area: space;
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+    grid-column-gap: 0.2vw;
+}
+
+.logoutBTN{
+    grid-area: space;
+}
+
+.hompage{
+    display: grid;
+    grid-template-areas: 
+    'lside weather rside'
+    'lside main rside';
+    grid-template-rows: minmax(20px, auto)
+}
+
+.newPostForm{
+    grid-area: main;
+    display: block;
+    grid-template-areas: 'avatar input'
+}
+#postTextArea{
+    resize: none;
+    grid-area: input;
+}
+.controls{
+    display: flex;
+    grid-area: input;
+}
+.postImage{
+    grid-area: avatar;
+}
+
+.weather{
+    grid-area: weather;
+    display: block;
+    margin: 1vh 1vh;
+    text-align: center;
+}

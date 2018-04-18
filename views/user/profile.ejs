@@ -1,0 +1,12 @@
+
+<% include ../partials/header %>
+<h1><%= currentUser.firstName %> <%= currentUser.lastName%></h1>
+<p><a href="/user/<%= currentUser._id %>/edit">edit</a></p>
+<img src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName %>'s profile picture ">
+<p><strong>Gender:</strong><%= currentUser.gender %></p>
+<p><strong>Birthday:</strong><%= currentUser.age.toDateString() %></p>
+<p><strong>Work:</strong><%= currentUser.company %></p>
+<p><strong>Bio:</strong><%= currentUser.bio %></p>
+
+<p><%= currentUser.email %></p>
+<% include ../partials/footer %>

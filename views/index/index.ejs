@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+<div class="hompage"> 
+    <% if (currentUser) { %>
+        <div class="weather">
+        <p><strong><%= weather.location.country.toUpperCase() %> <%= weather.location.city %></strong> - <%= weather.item.condition.temp %><%=weather.item.condition.text %></p>
+        </div>
+        <div class="newPostForm"> 
+            <form action="/post" method="POST">
+                <div class="row">
+                <div class="input-field col s3">
+                    <div class="chip postImage">
+                        <img src="<%= currentUser.avatar %>" alt="">
+                        <%= currentUser.firstName %>
+                    </div>
+                </div>
+                    <div class="input-field col s9">
+                    <textarea class="materialize-textarea" name="post[content]" id="postTextArea" cols="40" rows="3">WAT is love?</textarea>
+                    <div class="controls">
+                        <div class="controlBTN">  
+                            <button class="btn waves-effect waves-light btn-small hoverable" type="submit" name="action">>
+                                <i class="send left">Post</i>
+                            </button></div>
+                    </div>
+                </div>
+            </div>
+            </form>
+            
+        </div>
+    <% } %>
+</div>
+<% include ../partials/footer %>

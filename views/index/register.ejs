@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+<h1>Sign up today!</h1>
+<% if(msg.length < 1 ){ %>
+    <p>Nothing to display</p>
+<% } else { %>
+    <p><%= msg.message %></p>
+<% } %>
+
+<form action="/signup" method="POST">
+    <div class="field">
+        <label for="email">E-Mail</label>
+        <input type="email" name="user[email]" required>
+    </div>
+    <div class="field">
+        <label for="password">Password</label>
+        <input type="password" name="user[password]" required>
+    </div>
+    <input type="submit" value="WOOOHOOO!">
+</form>
+<% include ../partials/footer %>
