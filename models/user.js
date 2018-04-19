@@ -23,9 +23,9 @@ let userSchema = new mongoose.Schema ({
         type: String,
         default: "/images/defaultAvatar.png"
     },
-    age: {
+    bday: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     bio: String,
     company: String,
@@ -39,12 +39,6 @@ let userSchema = new mongoose.Schema ({
         type: String,
         default: 'tel-aviv'
     }
-    // comments: [{
-    //     id: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref="Comment"
-    //     }
-    // }]
 });
 
 userSchema.plugin(passportLocalMongoose);

@@ -2,14 +2,14 @@
 <div class="hompage"> 
     <% if (currentUser) { %>
         <div class="weather">
-        <p><strong><%= weather.location.country.toUpperCase() %> <%= weather.location.city %></strong> - <%= weather.item.condition.temp %><%=weather.item.condition.text %></p>
+        <p><strong><%= weather.location.country.toUpperCase() %> <%= weather.location.city %></strong> - <%=weather.item.condition.text %></p>
         </div>
         <div class="newPostForm"> 
-            <form action="/post" method="POST">
+            <form action="/user/<%= currentUser._id %>/post" method="POST">
                 <div class="row">
                 <div class="input-field col s3">
                     <div class="chip postImage">
-                        <img src="<%= currentUser.avatar %>" alt="">
+                        <img src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName%> <%=currentUser.lastName %> profile picture">
                         <%= currentUser.firstName %>
                     </div>
                 </div>
