@@ -4,12 +4,19 @@ const   express = require('express'),
 
 
 let postSchema = mongoose.Schema({
+    date: {
+        type: Date,
+        default: Date.now()
+    },
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
     content: String,
-    image: String
+    image: {
+        type: String,
+        default: "/images/defaultImage.jpg"
+    }
 });
 
 

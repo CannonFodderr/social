@@ -10,8 +10,6 @@ body{
     padding: 0;
 }
 img{
-    position: relative;
-    display: block;
     height: 100%;
 }
 .container{
@@ -22,51 +20,71 @@ img{
 .nav_container{
     width: 100%;
     height: 6vh;
+    position: relative;
     display: grid;
-    grid-template-areas: 'brand space profile';
-    grid-template-columns: 1fr 7fr 2fr;
-    grid-template-rows: 6vh;
+    grid-template-areas: 'brand profile';
+    grid-template-columns: 2fr 8fr;
     background: #333;
     padding: 0vh 4vw 0vh 4vw;
     font-size: 1rem;
+    line-height: 6vh;
 }
-.nav_container a {
+.nav_container input {
     color: #fff;
+}
+.nav_container .material-icons {
+    font-size: 6vh;
+}
+.navLink{
+    text-decoration: none;
     position: relative;
-    text-decoration: none;  
 }
 .avatar{
-    display: block;
+    /* display: inline-block; */
+    position: relative;
+    margin: 0 2vw 0 auto;
+    height: 6vh;
 }
 .avatar img{
-    position: relative;
-    margin: 0 auto;
-    height: 6vh;
     border: 1px dashed #ccc;
     border-radius: 50%;
 }
 .brand{
-    height: auto;
+    height: 100%;
     grid-area: brand;
+    line-height: 3.5rem;
 }
 
 .profile{
+    height: auto;
+    width: 100%;
+    display: inline-flex;
     grid-area: profile;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     position: relative;
+    margin: 0 auto;
     text-align: center;
     text-transform: uppercase;
 }
+
+.profileImage{
+    height: auto;
+    width: 100%;
+}
 .loginForm{
-    grid-area: space;
+    grid-area: profile;
     display: grid;
+    width: 40vw;
+    height: 6vh;
+    position: relative;
+    margin: 0 1vw 0 auto;
     grid-template-columns: 3fr 3fr 1fr;
-    grid-column-gap: 0.2vw;
+    grid-column-gap: 1vw;
+    color: #fff;
+    line-height: 100%;
 }
 
 .logoutBTN{
-    grid-area: space;
+    grid-area: profile;
 }
 
 .hompage{
@@ -99,4 +117,8 @@ img{
     display: block;
     margin: 1vh 1vh;
     text-align: center;
+}
+
+.deletePost{
+    display: inline;
 }

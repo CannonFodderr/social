@@ -17,7 +17,8 @@ const dburl = process.env.DBURL;
 
 //Import Routes
 const indexRoutes = require('./routes/index'),
-      userRoutes = require('./routes/user');
+      userRoutes = require('./routes/user'),
+      postRoutes = require('./routes/posts');
 // Mongo Config
 mongoose.connect(dburl);
 // APP Config
@@ -46,5 +47,6 @@ app.use((req, res, next) => {
 
 app.use(indexRoutes);
 app.use('/user', userRoutes);
+app.use('/user/:id/', postRoutes);
 
 app.listen(port, (req, res) => console.log(`Server is running on port ${port}`));

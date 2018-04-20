@@ -1,20 +1,20 @@
-const express = require('express'),
+const   express = require('express'),
         router = express.Router(),
         User = require('../models/user'),
         Post = require('../models/post'),
-        app = express();
+        app = express(),
+        middleware = require('../middleware/middleware');
 
-isLoggedIn = (req, res, next) => {
-        if(!req.user){
-                res.redirect('/');
-        }
-        else{
-                next();
-        }
-}
-
-router.get('/:id',isLoggedIn, (req, res) => {
-                res.render('user/profile');  
+router.get('/:id',middleware.isLoggedIn, (req, res) => {
+        User.findById(req.user._id).populate('posts').exec((err, foundUser) => {
+                if(err){
+                        console.log(err),
+                        res.redirect('back');
+                } else {
+                        res.render('user/profile', {posts: foundUser.posts});
+                }
+        })
+                 
 });
 
 router.get('/:id/edit',isLoggedIn, (req, res) =>{
@@ -43,30 +43,5 @@ router.put('/:id', (req, res) => {
                 }
         });
 });
-
-router.post('/:id/post',isLoggedIn, (req, res) => {
-        let newPost = {
-                author: req.user._id,
-                content: req.body.post.content
-        }
-        Post.create(newPost, (err, createdPost) => {
-                if(err){
-                        console.log(err);
-                        res.redirect('/');
-                } else {
-                        User.findById(req.user._id, (err, foundUser) => {
-                                if(err){
-                                        console.log(err);
-                                        res.redirect('/');
-                                } else {
-                                        let ref = createdPost._id;
-                                        foundUser.posts.push({ref});
-                                        foundUser.save();
-                                        res.redirect('/');
-                                }
-                        })
-                }
-        })
-})
 
 module.exports = router;

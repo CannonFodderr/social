@@ -29,12 +29,12 @@ let userSchema = new mongoose.Schema ({
     },
     bio: String,
     company: String,
-    posts: [{
-        id: {
+    posts: [
+        {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"
         }
-    }],
+    ],
     location: {
         type: String,
         default: 'tel-aviv'

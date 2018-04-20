@@ -6,28 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>Document</title>
 </head>
 <body>
     <header>
         <nav class="nav_container">
-            <div class="brand field">
-                <a href="/">Home</a>
-                <%if(!currentUser){ %>
-                <a href="/signup">Signup</a>
-                <% } %>
+            <div class="brand">
+                <a class="navLink" href="/"><i class="teal-text material-icons">insert_emoticon</i></a>
             </div>
-
             <div class="profile">
                 <% if(currentUser){ %>
-
                 <a class="avatar" href="/user/<%= currentUser._id %>">
-                    <img  src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName %>'s profile">
+                    <img src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName %>'s profile">
                 </a>
 
-                <div class="field">
-                    <a class="logoutBTN" href="/logout">Logout</a>
-                </div>
+                    <a class="navLink logoutBTN" href="/logout"><i class="teal-text large material-icons">sync_disabled</i></a>
+
                 <% } else{ %>
                     <form class="loginForm" action="/login" method="POST">
                     <div class="field">
@@ -38,11 +34,13 @@
                         <label for="password"></label>
                         <input type="password" name="password" placeholder="Password">    
                     </div>
-                    <div class="field">
-                    <input type="submit" value="login">
-                    </div>
+                        <button class="btn btn-large btn-flat teal-text">
+                            <i class="medium material-icons">send</i>
+                        </button> 
                     </form>
-
+                    <div class="signupBTN">
+                        <a class="btn white-text btn-flat" href="/signup">Signup</a>
+                    </div>
                 <% } %>
             </div>              
         </nav>

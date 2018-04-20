@@ -1,13 +1,48 @@
 <% include ../partials/header %>
-<h1><%= currentUser.firstName %> <%= currentUser.lastName%></h1>
-<p><a href="/user/<%= currentUser._id %>/edit">edit</a></p>
-<img src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName %>'s profile picture ">
-<p><strong>Gender:</strong><%= currentUser.gender %></p>
-<p><strong>Birthday:</strong><%= currentUser.bday.toDateString() %></p>
-<p><strong>Work:</strong><%= currentUser.company %></p>
-<p><strong>Bio:</strong><%= currentUser.bio %></p>
+<div class="container">
+    <div class="card medium horizontal">
+        <h1><%= currentUser.firstName %> <%= currentUser.lastName%></h1>
+        <div class="profileImage card-image waves-effect waves-block waves-light">
+          <img src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName %>'s profile picture">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p><strong>Gender:</strong> <%= currentUser.gender %></p>
+            <p><strong>Birthday:</strong> <%= currentUser.bday.toDateString() %></p>
+            <p><strong>Work:</strong> <%= currentUser.company %></p>
+            <p><strong>Bio:</strong> <%= currentUser.bio %></p>
+            <p><strong>Email:</strong> <%= currentUser.email %></p>
+            <p></p>
+            <div class="card-action">
+            <p><a class="btn teal" href="/user/<%= currentUser._id %>/edit">edit</a></p>
+            </div>
+          </div>
+      </div>
+      </div>
+
+<h4>Posts</h4>
+
+<% posts.forEach((post)=>{ %>
+    <div class="col s12 m7">
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="<%= post.image %>">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p><%= post.content%></p>
+                </div>
+                <div class="card-action">
+                  <a class="btn orange" href="/user/<%=currentUser._id%>/post/<%= post._id %>/edit">Edit</a>
+                  <form class="deletePost" action="/user/<%=currentUser._id%>/post/<%= post._id %>?_method=DELETE" method="POST">
+                    <button class="btn red"><i class="material-icons">delete</i></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+<% }) %>
+</div>
 
 
-
-<p><%= currentUser.email %></p>
 <% include ../partials/footer %>
