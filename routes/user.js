@@ -17,7 +17,7 @@ router.get('/:id',middleware.isLoggedIn, (req, res) => {
                  
 });
 
-router.get('/:id/edit',isLoggedIn, (req, res) =>{
+router.get('/:id/edit',middleware.isLoggedIn, (req, res) =>{
         if(!req.user){
                 res.redirect('/');                
         } else {

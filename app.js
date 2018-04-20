@@ -5,6 +5,7 @@ const express               = require('express'),
       path                  = require('path'),
       router                = express.Router(),
       passport              = require('passport'),
+      middleware            = require('./middleware/middleware.js')
       methodOverride        = require('method-override'),
       LocalStrategy         = require('passport-local'),
       passportLocalMongoose = require('passport-local-mongoose'),
