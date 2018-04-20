@@ -16,6 +16,10 @@ let postSchema = mongoose.Schema({
     image: {
         type: String,
         default: "/images/defaultImage.jpg"
+    },
+    isPublic: {
+        type: Boolean,
+        default: true
     }
 });
 

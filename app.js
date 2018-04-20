@@ -5,7 +5,6 @@ const express               = require('express'),
       path                  = require('path'),
       router                = express.Router(),
       passport              = require('passport'),
-      middleware            = require('./middleware/middleware.js')
       methodOverride        = require('method-override'),
       LocalStrategy         = require('passport-local'),
       passportLocalMongoose = require('passport-local-mongoose'),
@@ -43,6 +42,9 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
       res.locals.currentUser = req.user;
+      if(req.user !== undefined){
+            res.locals.notifications = req.user.notifications;
+      } 
       next();
 });
 

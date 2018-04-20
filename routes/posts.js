@@ -2,7 +2,7 @@ const express = require('express'),
         router = express.Router(),
         User = require('../models/user'),
         Post = require('../models/post'),
-        middleware = require('../middleware/middleware'),
+        middleware = require('../middleware'),
         app = express();
 
 router.post('/post',middleware.isLoggedIn, (req, res) => {
@@ -30,7 +30,7 @@ router.post('/post',middleware.isLoggedIn, (req, res) => {
     });
 });
 
-router.delete('/post/:postid', (req, res) => {
+router.delete('/post/:postid',middleware.checkPostOwnership, (req, res) => {
     Post.findById(req.params.postid, (err, foundPost) => {
             if(err){
                     console.log(err);
@@ -50,11 +50,11 @@ router.delete('/post/:postid', (req, res) => {
                                             foundPost.remove();
                                             res.redirect('back');
                                     }
-                            })
+                            });
 
                     }
             }
-    })
-})
+    });
+});
 
 module.exports = router;

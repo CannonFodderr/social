@@ -26,9 +26,21 @@
                     </div>
                 </div>
             </div>
-            </form>
-            
+            </form>           
         </div>
     <% } %>
+    <div class="publicPostsList">
+    <% posts.forEach(function(post){ %>
+        
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="<%= post.image %>" alt="">
+                </div>
+                <div class="card-content">
+                    <%= post.content %>
+                </div>
+            </div>
+    <% }); %>
+    </div>
 </div>
 <% include ../partials/footer %>

@@ -3,7 +3,7 @@ const   express = require('express'),
         User = require('../models/user'),
         Post = require('../models/post'),
         app = express(),
-        middleware = require('../middleware/middleware');
+        middleware = require('../middleware');
 
 router.get('/:id',middleware.isLoggedIn, (req, res) => {
         User.findById(req.user._id).populate('posts').exec((err, foundUser) => {
@@ -39,6 +39,8 @@ router.put('/:id', (req, res) => {
                 if(err){
                         res.render('user/editProfile', {msg: err});
                 } else {
+                        updatedUser.notifications.push({content: "Profile updated!"});
+                        updatedUser.save();
                         res.redirect('/');
                 }
         });

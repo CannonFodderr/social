@@ -38,7 +38,20 @@ let userSchema = new mongoose.Schema ({
     location: {
         type: String,
         default: 'tel-aviv'
-    }
+    },
+    notifications: [{
+        content: String,
+        date: { type: Date, default: Date.now()},
+        image: String,
+        isUnread: {
+            type: Boolean,
+            default: true
+        }
+    }],
+    friends: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }]
 });
 
 userSchema.plugin(passportLocalMongoose);

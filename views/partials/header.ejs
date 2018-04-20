@@ -18,10 +18,19 @@
             </div>
             <div class="profile">
                 <% if(currentUser){ %>
+                    <button id="notificationsBTN" class="btn red"><%= notifications.length%></button>
+                    <ul class="notificationsList">
+                        <h5>Notifications</h5>
+                        <% notifications.forEach(function(notify){ %>
+                            <% if(notify.isUnread == true) {%>
+                            <li><a href="<%= notify._id %>"><span class="readNotification"><i class="material-icons">check_box</i> </span><%= notify.content %></a></li>
+                            <% } %>
+                        <% })%>
+                    </ul>
                 <a class="avatar" href="/user/<%= currentUser._id %>">
                     <img src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName %>'s profile">
                 </a>
-
+                    <!-- notifications -->
                     <a class="navLink logoutBTN" href="/logout"><i class="teal-text large material-icons">sync_disabled</i></a>
 
                 <% } else{ %>

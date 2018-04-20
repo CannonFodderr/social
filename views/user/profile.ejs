@@ -1,17 +1,17 @@
 <% include ../partials/header %>
 <div class="container">
     <div class="card medium horizontal">
-        <h1><%= currentUser.firstName %> <%= currentUser.lastName%></h1>
         <div class="profileImage card-image waves-effect waves-block waves-light">
           <img src="<%= currentUser.avatar %>" alt="<%= currentUser.firstName %>'s profile picture">
         </div>
         <div class="card-stacked">
           <div class="card-content">
+            <h1><%= currentUser.firstName %> <%= currentUser.lastName%></h1>
             <p><strong>Gender:</strong> <%= currentUser.gender %></p>
             <p><strong>Birthday:</strong> <%= currentUser.bday.toDateString() %></p>
             <p><strong>Work:</strong> <%= currentUser.company %></p>
             <p><strong>Bio:</strong> <%= currentUser.bio %></p>
-            <p><strong>Email:</strong> <%= currentUser.email %></p>
+            <p><strong>Email:</strong> <%= currentUser.username %></p>
             <p></p>
             <div class="card-action">
             <p><a class="btn teal" href="/user/<%= currentUser._id %>/edit">edit</a></p>
