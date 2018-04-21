@@ -6,9 +6,16 @@ const express = require('express'),
         app = express();
 
 router.post('/post',middleware.isLoggedIn, (req, res) => {
+        let isPublicValue;
+        if(req.body.post.isPublic == undefined){
+                isPublicValue = false;
+        } else {
+                isPublicValue = true;
+        }
     let newPost = {
             author: req.user._id,
-            content: req.body.post.content
+            content: req.body.post.content,
+            isPublic: isPublicValue
     }
     Post.create(newPost, (err, createdPost) => {
             if(err){
