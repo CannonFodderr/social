@@ -13,7 +13,7 @@ router.post('/post',middleware.isLoggedIn, (req, res) => {
     Post.create(newPost, (err, createdPost) => {
             if(err){
                     console.log(err);
-                    res.redirect('/');
+                    res.redirect('back');
             } else {
                     User.findById(req.user._id, (err, foundUser) => {
                             if(err){
@@ -23,7 +23,7 @@ router.post('/post',middleware.isLoggedIn, (req, res) => {
                                     let ref = createdPost._id;
                                     foundUser.posts.push(ref);
                                     foundUser.save();
-                                    res.redirect('/');
+                                    res.redirect('back');
                             }
                     });
             }
@@ -55,6 +55,9 @@ router.delete('/post/:postid',middleware.checkPostOwnership, (req, res) => {
                     }
             }
     });
+});
+router.get('/post/:postid/edit',middleware.checkPostOwnership, (req, res)=>{
+        res.render('post/edit');
 });
 
 module.exports = router;

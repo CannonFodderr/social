@@ -13,9 +13,9 @@
                         <%= currentUser.firstName %>
                     </div>
                 </div>
-                    <div class="input-field col s9">
+            <div class="input-field col s9">
                     <textarea class="materialize-textarea hoverable" placeholder="WAT is love?" name="post[content]" id="postTextArea" cols="40" rows="3"></textarea>
-                    <div class="controls">
+                <div class="controls">
                         <div class="controlBTN">
                             <a href="#" class="deep-purple waves-effect waves-light btn">
                                 <i class="material-icons">camera_alt</i>
@@ -34,10 +34,23 @@
         
             <div class="card horizontal">
                 <div class="card-image">
+                    
                     <img src="<%= post.image %>" alt="">
                 </div>
+                <div class="card-stacked">
                 <div class="card-content">
-                    <%= post.content %>
+                    <p>By <%= post.author.username %></p>
+                    <p><%= post.content %></p>
+                </div>
+                <% if(currentUser && post.author._id == currentUser.id) { %>
+                <div class="card-action">
+                    <a class="btn orange"><i class="material-icons">edit</i></a>
+                    <form class="deletePost" action="/user/<%=currentUser._id%>/post/<%= post._id %>?_method=DELETE" method="POST">
+                        <button class="btn red"><i class="material-icons">delete</i></button>
+                    </form>
+                </div>
+                <% } %>
+
                 </div>
             </div>
     <% }); %>

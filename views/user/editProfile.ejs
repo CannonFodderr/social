@@ -11,7 +11,6 @@
             <input type="text" name="user[lastName]" value="<%= currentUser.lastName %>" required>
         </div>
         <div class="field">
-        <label for="">Gender:</label>
         <select name="user[gender]" value="female">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -19,7 +18,7 @@
         </div>
         <div class="field">
         <label for="">Birthday</label>
-            <input type="date" name="user[bday]" value="<%= currentUser.bday %>" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+            <input class="datepicker" type="date" name="user[bday]" value="<%= currentUser.bday %>" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
         </div>
         <div class="field">
             <label for="">Company</label>
@@ -31,9 +30,9 @@
             </div>
         <div class="field">
             <label for="">Stuff about you...</label>
-            <textarea name="user[bio]" id="" cols="30" rows="10"><%= currentUser.bio %></textarea>
+            <textarea class="materialize-textarea" name="user[bio]" id="" cols="30" rows="10"><%= currentUser.bio %></textarea>
         </div>
-        <input type="submit" value="submit">
+        <input class="btn" type="submit" value="submit">
     </form>
 </div>
 <% include ../partials/footer %>

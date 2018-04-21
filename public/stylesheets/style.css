@@ -82,7 +82,6 @@ img{
 .notificationsList{
     position: relative;
     z-index: 100;
-    height: 0;
     opacity: 0;
     width: 30vw;
     background: #333;
@@ -95,8 +94,10 @@ img{
 }
 .notificationsList a {
     padding: 0px;
+    height: 0vh;
 }
 .notificationsList > li{
+    height: 0px;
     width: 100%;
     text-align: left;
 
@@ -128,9 +129,18 @@ img{
     color: teal;
 }
 .showNotifications{
-    height: max-content;
+    height: 100%;
     opacity: 1;
     transition: all 0.2s ease-in;
+}
+
+.showNotifications li {
+    height: 6vh;
+}
+.showNotifications a {
+    height: 6vh;
+    position: relative;
+    line-height: 6vh;
 }
 .loginForm{
     grid-area: profile;

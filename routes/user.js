@@ -25,7 +25,7 @@ router.get('/:id/edit',middleware.isLoggedIn, (req, res) =>{
         } 
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id',middleware.isLoggedIn, (req, res) => {
         let userDetails = { 
                 firstName: req.body.user.firstName,
                 lastName: req.body.user.lastName,

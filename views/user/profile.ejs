@@ -19,9 +19,22 @@
           </div>
       </div>
       </div>
-
-<h4>Posts</h4>
-
+      <div class="input-field col s12">
+      <form action="/user/<%= currentUser._id %>/post" method="POST">
+          <textarea class="materialize-textarea hoverable" placeholder="Say something..." name="post[content]" id="postTextArea" cols="40" rows="3"></textarea>
+      <div class="controls">
+              <div class="controlBTN">
+                  <a href="#" class="deep-purple waves-effect waves-light btn">
+                      <i class="material-icons">camera_alt</i>
+                  </a>
+                  <button class="btn purple waves-effect waves-light btn-small hoverable" type="submit" name="action">
+                      <i class="material-icons">send</i>
+                  </button>
+               </div>
+          </div>
+          </form>
+      </div>
+<h4>My Posts</h4>
 <% posts.forEach((post)=>{ %>
     <div class="col s12 m7">
             <div class="card horizontal">

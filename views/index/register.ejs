@@ -1,20 +1,29 @@
 <% include ../partials/header %>
-<h1>Sign up today!</h1>
-<% if(msg.length < 1 ){ %>
-    <p>Nothing to display</p>
-<% } else { %>
-    <p><%= msg.message %></p>
-<% } %>
 
-<form action="/signup" method="POST">
-    <div class="field">
-        <label for="email">E-Mail</label>
-        <input type="email" name="user[email]" required>
+<div class="container">
+    <h1>Sign up today!</h1>
+    <% if(msg.length < 1 ){ %>
+        
+    <% } else { %>
+        <p><%= msg.message %></p>
+    <% } %>
+    <form class="col s12" action="/signup" method="POST">
+        <div class="row">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">email</i>
+            <label for="email">E-Mail</label>
+            <input id="email" type="email" name="user[email]" placeholder="john@doe.com" required>
+        </div>
+        <div class="input-field col s6">
+            <i class="material-icons prefix">security</i>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="user[password]" placeholder="Super secret password" required>
+        </div>
     </div>
-    <div class="field">
-        <label for="password">Password</label>
-        <input type="password" name="user[password]" required>
-    </div>
-    <input type="submit" value="WOOOHOOO!">
-</form>
+        <div class="input-field col s6">
+        <input class="btn" type="submit" value="Signup!">
+        </div>
+
+    </form>
+</div>
 <% include ../partials/footer %>

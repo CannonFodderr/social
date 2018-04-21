@@ -19,7 +19,7 @@ getWeather = (city, cb) => {
 
 // Routes
 router.get('/', (req, res) => {
-      Post.find({isPublic: true}, (err, foundPosts)=>{
+      Post.find({isPublic: true}).populate("author", 'username').exec((err, foundPosts)=>{
             if(err){
                   console.log(err);
                   res.redirect('/');
@@ -31,6 +31,7 @@ router.get('/', (req, res) => {
                               console.log(err);
                         } else {
                               weather = body;
+                              
                               res.render('./index/index', {weather: weather, posts:foundPosts});
                         }
                   });           
@@ -40,7 +41,8 @@ router.get('/', (req, res) => {
             }
       });    
 });
-router.post('/login', passport.authenticate('local'), (req, res) => res.redirect('/'));
+// Login Route
+router.post('/login', passport.authenticate('local', {successRedirect: 'back', faliureRedirect: 'back'}));
 // Registration Routes
 router.get('/signup', (req, res) => res.render('./index/register', {msg: ''}));
 
@@ -52,7 +54,7 @@ router.post('/signup', (req, res) => {
                   let welcome = "Welcome to the website!"
                   createdUser.notifications.push({content: welcome});
                   createdUser.save();
-                  res.redirect('/');
+                  res.redirect('back');
             }
       })
 });

@@ -14,7 +14,7 @@ middlewareOBJ.isLoggedIn = (req, res, next) => {
 middlewareOBJ.checkPostOwnership = (req, res, next)=>{
     if(req.isAuthenticated()){
         Post.findById(req.params.postid, (err, foundPost)=>{
-            if(foundPost.author._id.equals(req.user._id)){
+            if(foundPost.author.equals(req.user._id)){
                 next();
             } else {
                 res.redirect('back');

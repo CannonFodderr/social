@@ -20,10 +20,10 @@
                 <% if(currentUser){ %>
                     <button id="notificationsBTN" class="btn red"><%= notifications.length%></button>
                     <ul class="notificationsList">
-                        <h5>Notifications</h5>
+                        <!-- <h5>Notifications</h5> -->
                         <% notifications.forEach(function(notify){ %>
                             <% if(notify.isUnread == true) {%>
-                            <li><a href="<%= notify._id %>"><span class="readNotification"><i class="material-icons">check_box</i> </span><%= notify.content %></a></li>
+                            <li class="notificationsItem"><a href="#<%= notify._id %>"><span class="readNotification"><i class="material-icons">check_box</i> </span><%= notify.content %></a></li>
                             <% } %>
                         <% })%>
                     </ul>
