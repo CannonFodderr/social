@@ -46,4 +46,19 @@ router.put('/:id',middleware.isLoggedIn, (req, res) => {
         });
 });
 
+// Friend request
+router.get('/:from/add/:sendto',middleware.isLoggedIn, (req, res) => {
+        User.findById(req.params.sendto, (err, foundUser)=>{
+                if(err){
+                        console.log(err);
+                        res.redirect('back');
+                } else {
+                        let content = "" + req.user.username + " sent you a friend request";
+                        foundUser.notifications.push({content: content});
+                        foundUser.save();
+                        res.redirect('back');
+                }
+        })
+});
+
 module.exports = router;

@@ -33,12 +33,13 @@
             </form>           
         </div>
     <% } %>
+
+<!-- Public Posts -->
     <div class="publicPostsList">
     <% posts.forEach(function(post){ %>
         
             <div class="card horizontal">
-                <div class="card-image">
-                    
+                <div class="card-image">                    
                     <img src="<%= post.image %>" alt="">
                 </div>
                 <div class="card-stacked">
@@ -53,6 +54,10 @@
                         <button class="btn red"><i class="material-icons">delete</i></button>
                     </form>
                 </div>
+                <% } else { %>
+                    <% if(currentUser){ %>
+                    <a class="btn" href="/user/<%=currentUser._id %>/add/<%= post.author._id %>">Add friend</a>
+                    <% } %>
                 <% } %>
 
                 </div>

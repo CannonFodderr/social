@@ -30,8 +30,7 @@ router.get('/', (req, res) => {
                         if(err){
                               console.log(err);
                         } else {
-                              weather = body;
-                              
+                              weather = body;                              
                               res.render('./index/index', {weather: weather, posts:foundPosts});
                         }
                   });           
