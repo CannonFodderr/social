@@ -47,7 +47,7 @@ app.use((req, res, next) => {
       } 
       next();
 });
-
+mongoose.Promise = global.Promise;
 app.use(indexRoutes);
 app.use('/user', userRoutes);
 app.use('/user/:id/', postRoutes);
